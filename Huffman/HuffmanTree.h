@@ -1,4 +1,12 @@
 
+// Tyler Manifold
+
+/* HuffmanTree.h
+
+	This class constructs a huffman tree from a given vector of <string,int> tuples
+
+*/
+
 #ifndef __HUFFMAN_TREE__
 #define __HUFFMAN_TREE__
 
@@ -67,8 +75,6 @@ private:
 
 	// initialize member of the vector as nodes
 	void init_nodes(vector<tuple<string, int>>* data);
-
-	int levels;
 
 	// build the tree out of the generated nodes vector
 	void make_tree();

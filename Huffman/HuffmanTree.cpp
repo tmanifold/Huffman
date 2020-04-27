@@ -1,4 +1,8 @@
 
+// Tyler Manifold
+
+// HuffmanTree.cpp
+
 #include "HuffmanTree.h"
 #include <algorithm>
 #include <iostream>
@@ -101,19 +105,26 @@ void HuffmanTreeNode::right(HuffmanTreeNode* n)
 
 HuffmanTree::HuffmanTree()
 {
-	this->levels = 0;
 	this->root = new HuffmanTreeNode();
 }
 
 HuffmanTree::HuffmanTree(vector<tuple<string, int>>* data)
 {
-	HuffmanTree();
+	this->root = new HuffmanTreeNode();
 
+	std::cout << "initializing nodes.\n";
 	this->init_nodes(data);
+
+	std::cout << "\nbuilding tree.\n";
 	this->make_tree();
+
+	std::cout << "\nprinting sideways.\nroot node is displayed leftmost.\n";
 	this->print(this->root, 0);
+
+	std::cout << "\nencoding leaves.\n";
 	this->init_assign_codes();
 
+	std::cout << "\nsorting encoded leaves by ASCII value.\n";
 	std::sort(codetable.begin(), codetable.end(),
 		[](tuple<string, string> a, tuple<string,string> b) {
 		
@@ -183,8 +194,6 @@ void HuffmanTree::make_tree()
 		// insert N into the list
 
 		this->nodes->push_back(N);
-
-		this->levels++;
 
 		// reorder by top node value
 		this->reorder();

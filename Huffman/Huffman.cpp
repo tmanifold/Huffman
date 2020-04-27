@@ -26,6 +26,7 @@ int main(void)
 
 	if (freq_txt)
 	{
+		std::cout << "reading freqency file\n";
 		while (freq_txt->good())
 		{
 			std::getline(*freq_txt, line, '\n');
@@ -42,7 +43,7 @@ int main(void)
 				data->emplace_back(line.substr(0, sp), std::stoi(line.substr(sp + 1, line.length() - 1)));
 			}
 		}
-
+		std::cout << "\npresorting characters by frequency.\n";
 		std::sort(data->begin(), data->end(),
 			[](std::tuple<std::string, int> a, std::tuple<std::string, int> b) {
 				return std::get<1>(a) < std::get<1>(b);
@@ -62,6 +63,7 @@ int main(void)
 
 		if (codetable)
 		{
+			std::cout << "\nwriting codetable to file.\n";
 			// write the codetable to the codetable file.
 			for (int i = 0; i < tree->codetable.size(); i++)
 			{
